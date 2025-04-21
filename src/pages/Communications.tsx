@@ -43,65 +43,73 @@ const Communications = () => {
           <TabsContent value="announcements" id="announcements">
             <div className="grid gap-4 md:grid-cols-2">
               <Card>
-                <CardHeader className="bg-blue-50">
+                <CardHeader className="bg-[#ea384c]/10">
                   <CardTitle className="flex items-center">
-                    <Bell className="mr-2 h-5 w-5 text-blue-600" />
-                    Maintenance Notice
+                    <Bell className="mr-2 h-5 w-5 text-[#ea384c]" />
+                    <span className="text-[#ea384c]">Maintenance Notice</span>
                   </CardTitle>
-                  <CardDescription>April 18, 2025</CardDescription>
+                  <CardDescription className="text-[#ea384c] font-semibold">April 18, 2025</CardDescription>
                 </CardHeader>
                 <CardContent className="pt-4">
-                  <p>Water supply will be interrupted on Saturday from 10 AM to 2 PM due to scheduled maintenance work on the main lines. Please store water accordingly.</p>
+                  <p className="text-[#ea384c]">
+                    Water supply will be interrupted on Saturday from 10 AM to 2 PM due to scheduled maintenance work on the main lines. Please store water accordingly.
+                  </p>
                 </CardContent>
-                <CardFooter className="text-sm text-gray-500">
+                <CardFooter className="text-sm text-[#ea384c]/80">
                   Posted by: Maintenance Department
                 </CardFooter>
               </Card>
               
               <Card>
-                <CardHeader className="bg-blue-50">
+                <CardHeader className="bg-yellow-100">
                   <CardTitle className="flex items-center">
-                    <Bell className="mr-2 h-5 w-5 text-blue-600" />
-                    Community Meeting
+                    <Bell className="mr-2 h-5 w-5 text-yellow-500" />
+                    <span className="text-yellow-700">Community Meeting</span>
                   </CardTitle>
-                  <CardDescription>April 20, 2025</CardDescription>
+                  <CardDescription className="text-yellow-700 font-semibold">April 20, 2025</CardDescription>
                 </CardHeader>
                 <CardContent className="pt-4">
-                  <p>The quarterly community meeting will be held this Sunday at 4 PM in the community hall. All residents are encouraged to attend as we'll be discussing important matters about security upgrades.</p>
+                  <p>
+                    The quarterly community meeting will be held this Sunday at 4 PM in the community hall. All residents are encouraged to attend as we'll be discussing important matters about security upgrades.
+                  </p>
                 </CardContent>
-                <CardFooter className="text-sm text-gray-500">
+                <CardFooter className="text-sm text-yellow-700/90">
                   Posted by: Community President
                 </CardFooter>
               </Card>
               
               <Card>
-                <CardHeader className="bg-blue-50">
+                <CardHeader className="bg-yellow-100">
                   <CardTitle className="flex items-center">
-                    <Bell className="mr-2 h-5 w-5 text-blue-600" />
-                    New Security Protocol
+                    <Bell className="mr-2 h-5 w-5 text-yellow-500" />
+                    <span className="text-yellow-700">New Security Protocol</span>
                   </CardTitle>
-                  <CardDescription>April 15, 2025</CardDescription>
+                  <CardDescription className="text-yellow-700 font-semibold">April 15, 2025</CardDescription>
                 </CardHeader>
                 <CardContent className="pt-4">
-                  <p>Starting next week, we're implementing a new visitor management system. All visitors must be pre-registered through the app. Please check your email for detailed instructions.</p>
+                  <p>
+                    Starting next week, we're implementing a new visitor management system. All visitors must be pre-registered through the app. Please check your email for detailed instructions.
+                  </p>
                 </CardContent>
-                <CardFooter className="text-sm text-gray-500">
+                <CardFooter className="text-sm text-yellow-700/90">
                   Posted by: Security Team
                 </CardFooter>
               </Card>
               
               <Card>
-                <CardHeader className="bg-blue-50">
+                <CardHeader className="bg-yellow-100">
                   <CardTitle className="flex items-center">
-                    <Bell className="mr-2 h-5 w-5 text-blue-600" />
-                    Landscaping Update
+                    <Bell className="mr-2 h-5 w-5 text-yellow-500" />
+                    <span className="text-yellow-700">Landscaping Update</span>
                   </CardTitle>
-                  <CardDescription>April 10, 2025</CardDescription>
+                  <CardDescription className="text-yellow-700 font-semibold">April 10, 2025</CardDescription>
                 </CardHeader>
                 <CardContent className="pt-4">
-                  <p>The community garden renovation is now complete. Residents are welcome to enjoy the new seating areas and walking paths. Please help us maintain this beautiful space by following the posted guidelines.</p>
+                  <p>
+                    The community garden renovation is now complete. Residents are welcome to enjoy the new seating areas and walking paths. Please help us maintain this beautiful space by following the posted guidelines.
+                  </p>
                 </CardContent>
-                <CardFooter className="text-sm text-gray-500">
+                <CardFooter className="text-sm text-yellow-700/90">
                   Posted by: Landscaping Committee
                 </CardFooter>
               </Card>
