@@ -53,7 +53,7 @@ const RequestsTab = () => (
     <div>
       <Card>
         <CardHeader className="bg-orange-50">
-          <CardTitle>Your Submitted Requests</CardTitle>
+          <CardTitle>Requests in Action</CardTitle>
           <CardDescription>Track your submitted requests</CardDescription>
         </CardHeader>
         <CardContent className="pt-4">
