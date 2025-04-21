@@ -96,7 +96,7 @@ const Communications = () => {
               <div>
                 <Card>
                   <CardHeader className="bg-orange-50">
-                    <CardTitle>Request Status</CardTitle>
+                    <CardTitle>Your Submitted Requests</CardTitle>
                     <CardDescription>Track your submitted requests</CardDescription>
                   </CardHeader>
                   <CardContent className="pt-4">
@@ -126,9 +126,6 @@ const Communications = () => {
                       </div>
                     </div>
                   </CardContent>
-                  <CardFooter>
-                    <Button variant="ghost" className="w-full">View All Requests</Button>
-                  </CardFooter>
                 </Card>
               </div>
             </div>
