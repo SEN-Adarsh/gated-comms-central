@@ -1,7 +1,11 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Calendar, MessageSquare, Bell, Handshake } from "lucide-react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import Navbar from "@/components/Navbar";
 import Announcements from "@/components/Announcements";
 import ContactSection from "@/components/ContactSection";
