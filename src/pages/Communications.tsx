@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Bell, MessageSquare, HelpCircle, Calendar, Users, Phone, Mail, Contact } from "lucide-react";
+import { Bell, MessageSquare, HelpCircle, Calendar, Users, Phone, Mail, Contact, Handshake } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
 const Communications = () => {
@@ -200,7 +200,7 @@ const Communications = () => {
                 <div>
                   <h2 className="text-lg font-bold mb-3 text-[#ea384c] flex items-center gap-2">
                     <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" className="inline mr-1 text-[#ea384c]"><circle cx="12" cy="12" r="10" stroke="#ea384c" strokeWidth="2" fill="none"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" stroke="#ea384c" strokeWidth="2" fill="none"/><circle cx="12" cy="17" r="1" fill="#ea384c"/></svg>
+                      <Handshake size={22} className="inline mr-1 text-[#ea384c]" />
                     </span>
                     Required Help
                   </h2>
@@ -225,7 +225,7 @@ const Communications = () => {
                 <div>
                   <h2 className="text-lg font-bold mb-3 text-green-700 flex items-center gap-2">
                     <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" className="inline mr-1 text-green-700 fill-green-100"><path d="M6 15v2a3 3 0 003 3h7a4 4 0 004-4v-2" stroke="#4f8a10" strokeWidth="2" fill="none"/><path d="M3 12v2a4 4 0 004 4h2" stroke="#4f8a10" strokeWidth="2" fill="none"/><path d="M17 10l-2-2a2 2 0 00-2-2h-1a2 2 0 00-2 2v2" stroke="#4f8a10" strokeWidth="2" fill="none"/><circle cx="9" cy="7" r="1" fill="#4f8a10"/></svg>
+                      <Handshake size={22} className="inline mr-1 text-green-700 fill-green-100" />
                     </span>
                     Offering Help
                   </h2>
@@ -248,6 +248,7 @@ const Communications = () => {
                   </div>
                 </div>
               </div>
+              
               <div>
                 <Card>
                   <CardHeader className="bg-green-50">
