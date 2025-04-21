@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ThumbsUp, ThumbsDown } from "lucide-react";
+import { ThumbsUp, ThumbsDown, X } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 // Initial demo data for requests (would be loaded from a backend in a real app)
 const demoRequests = [
@@ -37,13 +38,14 @@ type Request = typeof demoRequests[0];
 const SubmittedRequestsList: React.FC = () => {
   const [requests, setRequests] = useState<Request[]>([...demoRequests]);
   const [userVotes, setUserVotes] = useState<{ [key: number]: 1 | -1 | 0 }>({});
+  const { toast } = useToast();
 
-  const handleVote = (id: number, delta: 1 | -1) => {
+  const handleVote = (id: number, delta: 1 | -1 | 0) => {
     setRequests((curr) =>
       curr
         .map((req) => {
           if (req.id === id) {
-            // If previously voted, remove previous vote effect
+            // If canceling a vote, remove its effect
             const prevVote = userVotes[id] ?? 0;
             return {
               ...req,
@@ -54,6 +56,20 @@ const SubmittedRequestsList: React.FC = () => {
         })
         .sort((a, b) => b.votes - a.votes)
     );
+    
+    // Show toast notification based on vote action
+    if (delta === 0) {
+      toast({
+        title: "Vote Canceled",
+        description: "Your vote has been removed.",
+      });
+    } else {
+      toast({
+        title: delta === 1 ? "Upvoted" : "Downvoted",
+        description: `You have ${delta === 1 ? "upvoted" : "downvoted"} this request.`,
+      });
+    }
+    
     setUserVotes((curr) => ({ ...curr, [id]: delta }));
   };
 
@@ -82,8 +98,7 @@ const SubmittedRequestsList: React.FC = () => {
                       variant={userVotes[req.id] === 1 ? "default" : "ghost"}
                       className="mb-1"
                       aria-label="Upvote"
-                      onClick={() => handleVote(req.id, 1)}
-                      disabled={userVotes[req.id] === 1}
+                      onClick={() => userVotes[req.id] === 1 ? handleVote(req.id, 0) : handleVote(req.id, 1)}
                     >
                       <ThumbsUp className="h-4 w-4" />
                     </Button>
@@ -93,11 +108,22 @@ const SubmittedRequestsList: React.FC = () => {
                       variant={userVotes[req.id] === -1 ? "default" : "ghost"}
                       className="mt-1"
                       aria-label="Downvote"
-                      onClick={() => handleVote(req.id, -1)}
-                      disabled={userVotes[req.id] === -1}
+                      onClick={() => userVotes[req.id] === -1 ? handleVote(req.id, 0) : handleVote(req.id, -1)}
                     >
                       <ThumbsDown className="h-4 w-4" />
                     </Button>
+                    
+                    {userVotes[req.id] !== 0 && userVotes[req.id] !== undefined && (
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        className="mt-2"
+                        aria-label="Cancel vote"
+                        onClick={() => handleVote(req.id, 0)}
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
+                    )}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
