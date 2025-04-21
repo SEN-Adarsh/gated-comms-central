@@ -1,11 +1,11 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Bell, MessageSquare, HelpCircle, Calendar, Users, Phone, Mail, Contact, Handshake } from "lucide-react";
+import { Calendar, MessageSquare, Bell, Handshake } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import Announcements from "@/components/Announcements";
+import ContactSection from "@/components/ContactSection";
+import HelpSection from "@/components/HelpSection";
 
 const Communications = () => {
   return (
@@ -31,7 +31,7 @@ const Communications = () => {
               <span className="hidden sm:inline">Requests</span>
             </TabsTrigger>
             <TabsTrigger value="help" className="flex items-center gap-2">
-              <HelpCircle className="h-4 w-4" />
+              <Handshake className="h-4 w-4" />
               <span className="hidden sm:inline">Help</span>
             </TabsTrigger>
             <TabsTrigger value="events" className="flex items-center gap-2">
@@ -41,79 +41,7 @@ const Communications = () => {
           </TabsList>
           
           <TabsContent value="announcements" id="announcements">
-            <div className="grid gap-4 md:grid-cols-2">
-              <Card>
-                <CardHeader className="bg-[#ea384c]/10">
-                  <CardTitle className="flex items-center">
-                    <Bell className="mr-2 h-5 w-5 text-[#ea384c]" />
-                    <span className="text-[#ea384c]">Maintenance Notice</span>
-                  </CardTitle>
-                  <CardDescription className="text-[#ea384c] font-semibold">April 18, 2025</CardDescription>
-                </CardHeader>
-                <CardContent className="pt-4">
-                  <p className="text-[#ea384c]">
-                    Water supply will be interrupted on Saturday from 10 AM to 2 PM due to scheduled maintenance work on the main lines. Please store water accordingly.
-                  </p>
-                </CardContent>
-                <CardFooter className="text-sm text-[#ea384c]/80">
-                  Posted by: Maintenance Department
-                </CardFooter>
-              </Card>
-              
-              <Card>
-                <CardHeader className="bg-yellow-100">
-                  <CardTitle className="flex items-center">
-                    <Bell className="mr-2 h-5 w-5 text-yellow-500" />
-                    <span className="text-yellow-700">Community Meeting</span>
-                  </CardTitle>
-                  <CardDescription className="text-yellow-700 font-semibold">April 20, 2025</CardDescription>
-                </CardHeader>
-                <CardContent className="pt-4">
-                  <p>
-                    The quarterly community meeting will be held this Sunday at 4 PM in the community hall. All residents are encouraged to attend as we'll be discussing important matters about security upgrades.
-                  </p>
-                </CardContent>
-                <CardFooter className="text-sm text-yellow-700/90">
-                  Posted by: Community President
-                </CardFooter>
-              </Card>
-              
-              <Card>
-                <CardHeader className="bg-yellow-100">
-                  <CardTitle className="flex items-center">
-                    <Bell className="mr-2 h-5 w-5 text-yellow-500" />
-                    <span className="text-yellow-700">New Security Protocol</span>
-                  </CardTitle>
-                  <CardDescription className="text-yellow-700 font-semibold">April 15, 2025</CardDescription>
-                </CardHeader>
-                <CardContent className="pt-4">
-                  <p>
-                    Starting next week, we're implementing a new visitor management system. All visitors must be pre-registered through the app. Please check your email for detailed instructions.
-                  </p>
-                </CardContent>
-                <CardFooter className="text-sm text-yellow-700/90">
-                  Posted by: Security Team
-                </CardFooter>
-              </Card>
-              
-              <Card>
-                <CardHeader className="bg-yellow-100">
-                  <CardTitle className="flex items-center">
-                    <Bell className="mr-2 h-5 w-5 text-yellow-500" />
-                    <span className="text-yellow-700">Landscaping Update</span>
-                  </CardTitle>
-                  <CardDescription className="text-yellow-700 font-semibold">April 10, 2025</CardDescription>
-                </CardHeader>
-                <CardContent className="pt-4">
-                  <p>
-                    The community garden renovation is now complete. Residents are welcome to enjoy the new seating areas and walking paths. Please help us maintain this beautiful space by following the posted guidelines.
-                  </p>
-                </CardContent>
-                <CardFooter className="text-sm text-yellow-700/90">
-                  Posted by: Landscaping Committee
-                </CardFooter>
-              </Card>
-            </div>
+            <Announcements />
           </TabsContent>
           
           <TabsContent value="requests" id="requests">
@@ -203,103 +131,7 @@ const Communications = () => {
           </TabsContent>
           
           <TabsContent value="help" id="help">
-            <div className="grid gap-6 md:grid-cols-3">
-              <div className="md:col-span-2 flex flex-col gap-8">
-                <div>
-                  <h2 className="text-lg font-bold mb-3 text-[#ea384c] flex items-center gap-2">
-                    <span>
-                      <Handshake size={22} className="inline mr-1 text-[#ea384c]" />
-                    </span>
-                    Required Help
-                  </h2>
-                  <div className="bg-white border-l-4 border-[#ea384c] shadow rounded-lg mb-6 px-5 py-4">
-                    <h3 className="font-semibold text-[#ea384c] mb-1">Need help with grocery shopping</h3>
-                    <p className="text-gray-600 text-sm mb-2">
-                      I recently had surgery and can't drive for two weeks. Would someone be willing to help me with grocery shopping? I can provide a list and payment.
-                    </p>
-                    <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 mb-2">
-                      <span>Posted by David L. (C-310)</span>
-                      <span>•</span>
-                      <span>April 16, 2025</span>
-                    </div>
-                    <div className="flex gap-2">
-                      <Button variant="outline" size="sm" className="border-[#ea384c] text-[#ea384c] hover:bg-[#ea384c] hover:text-white">
-                        Contact
-                      </Button>
-                      <Button variant="ghost" size="sm">5 Replies</Button>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h2 className="text-lg font-bold mb-3 text-green-700 flex items-center gap-2">
-                    <span>
-                      <Handshake size={22} className="inline mr-1 text-green-700 fill-green-100" />
-                    </span>
-                    Offering Help
-                  </h2>
-                  <div className="bg-[#F2FCE2] border-l-4 border-green-500 shadow rounded-lg mb-6 px-5 py-4">
-                    <h3 className="font-semibold text-green-700 mb-1">Offering free piano lessons for kids</h3>
-                    <p className="text-gray-600 text-sm mb-2">
-                      I'm a retired piano teacher willing to give free basic piano lessons to kids in our community. Sessions would be once a week for 30 minutes. Space for 3 students only.
-                    </p>
-                    <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 mb-2">
-                      <span>Posted by Robert M. (A-105)</span>
-                      <span>•</span>
-                      <span>April 17, 2025</span>
-                    </div>
-                    <div className="flex gap-2">
-                      <Button variant="outline" size="sm" className="border-green-500 text-green-700 hover:bg-green-600 hover:text-white">
-                        Contact
-                      </Button>
-                      <Button variant="ghost" size="sm">7 Replies</Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <Card>
-                  <CardHeader className="bg-green-50">
-                    <CardTitle>Post Help Request</CardTitle>
-                    <CardDescription>Share your request with the community</CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-4">
-                    <form className="space-y-4">
-                      <div className="space-y-2">
-                        <label htmlFor="help-title" className="text-sm font-medium">Title</label>
-                        <Input id="help-title" placeholder="Brief title for your request" />
-                      </div>
-                      <div className="space-y-2">
-                        <label htmlFor="help-details" className="text-sm font-medium">Details</label>
-                        <Textarea 
-                          id="help-details" 
-                          placeholder="Explain what you need help with or what you're offering..." 
-                          rows={4}
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label htmlFor="help-category" className="text-sm font-medium">Category</label>
-                        <select
-                          id="help-category"
-                          className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200"
-                          defaultValue="required"
-                        >
-                          <option value="required">Required Help</option>
-                          <option value="offering">Offering Help</option>
-                        </select>
-                      </div>
-                      <div className="space-y-2">
-                        <label htmlFor="help-contact" className="text-sm font-medium">Contact Information</label>
-                        <Input id="help-contact" placeholder="How should people reach you?" />
-                      </div>
-                    </form>
-                  </CardContent>
-                  <CardFooter>
-                    <Button className="w-full">Post Request</Button>
-                  </CardFooter>
-                </Card>
-              </div>
-            </div>
+            <HelpSection />
           </TabsContent>
           
           <TabsContent value="events" id="events">
@@ -369,73 +201,7 @@ const Communications = () => {
           </TabsContent>
         </Tabs>
         
-        <section className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <Contact className="text-blue-600" size={22} />
-            Contact
-          </h2>
-          <p className="text-gray-600 mb-4">Connect with your community's key contacts for assistance and information.</p>
-          <div className="grid md:grid-cols-3 gap-4">
-            <Card>
-              <CardHeader className="bg-blue-50 pb-2 flex flex-row items-center gap-2">
-                <Users className="text-blue-500" size={20} />
-                <CardTitle className="text-lg">Management Office</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2 text-sm">
-                    <Phone className="text-gray-500" size={16} />
-                    <span>Phone:</span>
-                    <span className="font-medium">(555) 123-4567</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Mail className="text-gray-500" size={16} />
-                    <span>Email:</span>
-                    <span className="font-medium">office@gatedcomms.com</span>
-                  </div>
-                  <p className="text-sm mt-2">Office Hours:</p>
-                  <p className="text-sm">Mon-Fri: 9 AM - 5 PM, Sat: 10 AM - 2 PM</p>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="bg-green-50 pb-2 flex flex-row items-center gap-2">
-                <Phone className="text-green-600" size={20} />
-                <CardTitle className="text-lg">Maintenance</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2 text-sm">
-                    <Phone className="text-gray-500" size={16} />
-                    <span>Phone:</span>
-                    <span className="font-medium">(555) 123-4569</span>
-                  </div>
-                  <p className="text-sm mt-2">Emergency Support: 24/7</p>
-                  <p className="text-sm">Regular: Mon-Sat, 8 AM - 7 PM</p>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="bg-orange-50 pb-2 flex flex-row items-center gap-2">
-                <Users className="text-orange-500" size={20} />
-                <CardTitle className="text-lg">Security</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2 text-sm">
-                    <Phone className="text-gray-500" size={16} />
-                    <span>Phone:</span>
-                    <span className="font-medium">(555) 123-4570</span>
-                  </div>
-                  <p className="text-sm mt-2">Gate Security: 24/7 Coverage</p>
-                  <p className="text-sm">Office at Main Entrance</p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
+        <ContactSection />
       </main>
       
       <footer className="bg-gray-900 text-white py-8">
