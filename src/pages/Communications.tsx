@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -200,89 +199,58 @@ const Communications = () => {
           {/* Help Section */}
           <TabsContent value="help" id="help">
             <div className="grid gap-6 md:grid-cols-3">
-              <div className="md:col-span-2">
-                <Card>
-                  <CardHeader className="bg-green-50">
-                    <CardTitle>Community Help Board</CardTitle>
-                    <CardDescription>
-                      Ask for or offer help to fellow community members
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-6">
-                    <div className="space-y-6">
-                      <div className="border-b pb-6">
-                        <div className="flex items-start gap-4">
-                          <div className="bg-blue-100 p-3 rounded-full">
-                            <Users className="h-5 w-5 text-blue-600" />
-                          </div>
-                          <div>
-                            <h3 className="font-medium">Looking for carpool to downtown</h3>
-                            <p className="text-sm text-gray-600 mt-1">
-                              I work downtown and would love to join a carpool Monday-Friday. I can contribute for gas and take turns driving. Please contact me at unit B-203.
-                            </p>
-                            <div className="flex items-center mt-2 text-sm text-gray-500">
-                              <span>Posted by Sarah J. (B-203)</span>
-                              <span className="mx-2">•</span>
-                              <span>April 19, 2025</span>
-                            </div>
-                            <div className="mt-3 flex gap-2">
-                              <Button variant="outline" size="sm">Contact</Button>
-                              <Button variant="ghost" size="sm">3 Replies</Button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="border-b pb-6">
-                        <div className="flex items-start gap-4">
-                          <div className="bg-green-100 p-3 rounded-full">
-                            <Users className="h-5 w-5 text-green-600" />
-                          </div>
-                          <div>
-                            <h3 className="font-medium">Offering free piano lessons for kids</h3>
-                            <p className="text-sm text-gray-600 mt-1">
-                              I'm a retired piano teacher willing to give free basic piano lessons to kids in our community. Sessions would be once a week for 30 minutes. Space for 3 students only.
-                            </p>
-                            <div className="flex items-center mt-2 text-sm text-gray-500">
-                              <span>Posted by Robert M. (A-105)</span>
-                              <span className="mx-2">•</span>
-                              <span>April 17, 2025</span>
-                            </div>
-                            <div className="mt-3 flex gap-2">
-                              <Button variant="outline" size="sm">Contact</Button>
-                              <Button variant="ghost" size="sm">7 Replies</Button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <div className="flex items-start gap-4">
-                          <div className="bg-red-100 p-3 rounded-full">
-                            <Users className="h-5 w-5 text-red-600" />
-                          </div>
-                          <div>
-                            <h3 className="font-medium">Need help with grocery shopping</h3>
-                            <p className="text-sm text-gray-600 mt-1">
-                              I recently had surgery and can't drive for two weeks. Would someone be willing to help me with grocery shopping? I can provide a list and payment.
-                            </p>
-                            <div className="flex items-center mt-2 text-sm text-gray-500">
-                              <span>Posted by David L. (C-310)</span>
-                              <span className="mx-2">•</span>
-                              <span>April 16, 2025</span>
-                            </div>
-                            <div className="mt-3 flex gap-2">
-                              <Button variant="outline" size="sm">Contact</Button>
-                              <Button variant="ghost" size="sm">5 Replies</Button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+              <div className="md:col-span-2 flex flex-col gap-8">
+                <div>
+                  <h2 className="text-lg font-bold mb-3 text-[#ea384c] flex items-center gap-2">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" className="inline mr-1 text-[#ea384c]"><circle cx="12" cy="12" r="10" stroke="#ea384c" strokeWidth="2" fill="none"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" stroke="#ea384c" strokeWidth="2" fill="none"/><circle cx="12" cy="17" r="1" fill="#ea384c"/></svg>
+                    </span>
+                    Required Help
+                  </h2>
+                  <div className="bg-white border-l-4 border-[#ea384c] shadow rounded-lg mb-6 px-5 py-4">
+                    <h3 className="font-semibold text-[#ea384c] mb-1">Need help with grocery shopping</h3>
+                    <p className="text-gray-600 text-sm mb-2">
+                      I recently had surgery and can't drive for two weeks. Would someone be willing to help me with grocery shopping? I can provide a list and payment.
+                    </p>
+                    <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 mb-2">
+                      <span>Posted by David L. (C-310)</span>
+                      <span>•</span>
+                      <span>April 16, 2025</span>
                     </div>
-                  </CardContent>
-                </Card>
+                    <div className="flex gap-2">
+                      <Button variant="outline" size="sm" className="border-[#ea384c] text-[#ea384c] hover:bg-[#ea384c] hover:text-white">
+                        Contact
+                      </Button>
+                      <Button variant="ghost" size="sm">5 Replies</Button>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h2 className="text-lg font-bold mb-3 text-green-700 flex items-center gap-2">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" className="inline mr-1 text-green-700 fill-green-100"><path d="M6 15v2a3 3 0 003 3h7a4 4 0 004-4v-2" stroke="#4f8a10" strokeWidth="2" fill="none"/><path d="M3 12v2a4 4 0 004 4h2" stroke="#4f8a10" strokeWidth="2" fill="none"/><path d="M17 10l-2-2a2 2 0 00-2-2h-1a2 2 0 00-2 2v2" stroke="#4f8a10" strokeWidth="2" fill="none"/><circle cx="9" cy="7" r="1" fill="#4f8a10"/></svg>
+                    </span>
+                    Offering Help
+                  </h2>
+                  <div className="bg-[#F2FCE2] border-l-4 border-green-500 shadow rounded-lg mb-6 px-5 py-4">
+                    <h3 className="font-semibold text-green-700 mb-1">Offering free piano lessons for kids</h3>
+                    <p className="text-gray-600 text-sm mb-2">
+                      I'm a retired piano teacher willing to give free basic piano lessons to kids in our community. Sessions would be once a week for 30 minutes. Space for 3 students only.
+                    </p>
+                    <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 mb-2">
+                      <span>Posted by Robert M. (A-105)</span>
+                      <span>•</span>
+                      <span>April 17, 2025</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button variant="outline" size="sm" className="border-green-500 text-green-700 hover:bg-green-600 hover:text-white">
+                        Contact
+                      </Button>
+                      <Button variant="ghost" size="sm">7 Replies</Button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              
               <div>
                 <Card>
                   <CardHeader className="bg-green-50">
@@ -299,9 +267,20 @@ const Communications = () => {
                         <label htmlFor="help-details" className="text-sm font-medium">Details</label>
                         <Textarea 
                           id="help-details" 
-                          placeholder="Explain what you need help with..." 
+                          placeholder="Explain what you need help with or what you're offering..." 
                           rows={4}
                         />
+                      </div>
+                      <div className="space-y-2">
+                        <label htmlFor="help-category" className="text-sm font-medium">Category</label>
+                        <select
+                          id="help-category"
+                          className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-200"
+                          defaultValue="required"
+                        >
+                          <option value="required">Required Help</option>
+                          <option value="offering">Offering Help</option>
+                        </select>
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="help-contact" className="text-sm font-medium">Contact Information</label>
