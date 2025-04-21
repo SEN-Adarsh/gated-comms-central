@@ -1,7 +1,6 @@
-
 import React from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Calendar, store, onlineStore } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const EventsTab = () => (
@@ -55,37 +54,6 @@ const EventsTab = () => (
             <div className="mt-2 flex items-center text-sm text-gray-500">
               <Calendar className="h-4 w-4 mr-1" />
               <span>Every Saturday • 8:00 AM - 9:00 AM</span>
-            </div>
-          </div>
-        </div>
-        {/* Shopping Section */}
-        <div className="mt-8">
-          <h2 className="text-lg font-bold mb-3 text-blue-700 flex items-center gap-2">
-            <span>
-              <store size={22} className="inline mr-1 text-blue-700" />
-            </span>
-            Shopping
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Offline Section */}
-            <div className="bg-white border-l-4 border-gray-400 shadow rounded-lg px-5 py-4">
-              <div className="flex items-center gap-2 mb-1">
-                <store size={18} className="text-gray-600" />
-                <span className="text-base font-semibold text-gray-700">Offline</span>
-              </div>
-              <p className="text-gray-600 text-sm">
-                Details about upcoming in-person shopping events, local fairs, and opportunities to shop from community vendors.
-              </p>
-            </div>
-            {/* Online Section */}
-            <div className="bg-white border-l-4 border-green-400 shadow rounded-lg px-5 py-4">
-              <div className="flex items-center gap-2 mb-1">
-                <onlineStore size={18} className="text-green-600" />
-                <span className="text-base font-semibold text-green-700">Online</span>
-              </div>
-              <p className="text-gray-600 text-sm">
-                Find out about online shopping campaigns, safe e-commerce resources, and virtual marketplaces hosted by our community.
-              </p>
             </div>
           </div>
         </div>

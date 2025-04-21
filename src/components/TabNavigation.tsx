@@ -1,16 +1,16 @@
-
 import React from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Bell, MessageSquare, Handshake, Calendar } from "lucide-react";
+import { Bell, MessageSquare, Handshake, Calendar, ShoppingBag } from "lucide-react";
 import Announcements from "@/components/Announcements";
 import RequestsTab from "@/components/RequestsTab";
 import HelpSection from "@/components/HelpSection";
 import EventsTab from "@/components/EventsTab";
 import ContactSection from "@/components/ContactSection";
+import ShoppingTab from "@/components/ShoppingTab";
 
 const TabNavigation = () => (
   <Tabs defaultValue="announcements" className="w-full mb-8">
-    <TabsList className="grid w-full grid-cols-4 mb-8">
+    <TabsList className="grid w-full grid-cols-5 mb-8">
       <TabsTrigger value="announcements" className="flex items-center gap-2">
         <Bell className="h-4 w-4" />
         <span className="hidden sm:inline">Announcements</span>
@@ -27,6 +27,10 @@ const TabNavigation = () => (
         <Calendar className="h-4 w-4" />
         <span className="hidden sm:inline">Events</span>
       </TabsTrigger>
+      <TabsTrigger value="shopping" className="flex items-center gap-2">
+        <ShoppingBag className="h-4 w-4" />
+        <span className="hidden sm:inline">Shopping</span>
+      </TabsTrigger>
     </TabsList>
     <TabsContent value="announcements" id="announcements">
       <Announcements />
@@ -39,6 +43,9 @@ const TabNavigation = () => (
     </TabsContent>
     <TabsContent value="events" id="events">
       <EventsTab />
+    </TabsContent>
+    <TabsContent value="shopping" id="shopping">
+      <ShoppingTab />
     </TabsContent>
   </Tabs>
 );
