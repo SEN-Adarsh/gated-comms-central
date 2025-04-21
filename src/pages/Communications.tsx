@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -10,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import Announcements from "@/components/Announcements";
 import ContactSection from "@/components/ContactSection";
 import HelpSection from "@/components/HelpSection";
+import SubmittedRequestsList from "@/components/SubmittedRequestsList";
 
 const Communications = () => {
   return (
@@ -132,6 +132,7 @@ const Communications = () => {
                 </Card>
               </div>
             </div>
+            <SubmittedRequestsList />
           </TabsContent>
           
           <TabsContent value="help" id="help">
