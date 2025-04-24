@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Handshake, X } from "lucide-react";
@@ -39,7 +38,8 @@ const HelpSection = () => {
     details: "",
     category: "required",
     contact: "",
-    name: "" // Added name field
+    name: "",
+    unitNumber: "" // Added unit number field
   });
   
   const [showContactDialog, setShowContactDialog] = useState(false);
@@ -63,7 +63,7 @@ const HelpSection = () => {
       id: Date.now(),
       title: formData.title,
       details: formData.details,
-      author: `${formData.name} (Your Unit)`,
+      author: `${formData.name} (${formData.unitNumber})`, // Update author with unit number
       date: new Date().toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
@@ -80,7 +80,8 @@ const HelpSection = () => {
       details: "",
       category: "required",
       contact: "",
-      name: ""
+      name: "",
+      unitNumber: "" // Reset unit number
     });
     
     toast.success("Your help post has been added!");
@@ -176,6 +177,17 @@ const HelpSection = () => {
                   placeholder="Enter your name" 
                   className="w-full border rounded px-3 py-2"
                   value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="help-unitNumber" className="text-sm font-medium">Housing Unit Number</label>
+                <input 
+                  id="help-unitNumber" 
+                  placeholder="Enter your housing unit number" 
+                  className="w-full border rounded px-3 py-2"
+                  value={formData.unitNumber}
                   onChange={handleInputChange}
                   required
                 />
