@@ -111,8 +111,8 @@ const OfflineShopping = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {nearbyStores.map(store => (
-            <Card key={store.id} className="transition-shadow hover:shadow-lg bg-blue-50">
-              <CardHeader className="border-b pb-3 bg-blue-100">
+            <Card key={store.id} className="transition-shadow hover:shadow-lg border-blue-200">
+              <CardHeader className="pb-3">
                 <CardTitle className="text-lg font-bold text-blue-700">
                   {store.name}
                 </CardTitle>

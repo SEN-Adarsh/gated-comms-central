@@ -38,11 +38,15 @@ const HelpSection = () => {
     title: "",
     details: "",
     category: "required",
-    contact: ""
+    contact: "",
+    name: "" // Added name field
   });
   
   const [showContactDialog, setShowContactDialog] = useState(false);
-  const [currentContact, setCurrentContact] = useState({ name: "", contact: "" });
+  const [currentContact, setCurrentContact] = useState({ 
+    name: "", 
+    contact: "" 
+  });
   
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -55,12 +59,11 @@ const HelpSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Create new help post
     const newPost = {
       id: Date.now(),
       title: formData.title,
       details: formData.details,
-      author: "You (Your Unit)",
+      author: `${formData.name} (Your Unit)`,
       date: new Date().toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
@@ -70,29 +73,28 @@ const HelpSection = () => {
       contact: formData.contact
     };
     
-    // Add to the appropriate section
     setHelpPosts(prev => [newPost, ...prev]);
     
-    // Reset form
     setFormData({
       title: "",
       details: "",
       category: "required",
-      contact: ""
+      contact: "",
+      name: ""
     });
     
-    // Show confirmation
     toast.success("Your help post has been added!");
   };
   
   const handleContactClick = (post) => {
+    const name = post.author.split(" (")[0];
     setCurrentContact({
-      name: post.author,
+      name: name,
       contact: post.contact
     });
     setShowContactDialog(true);
   };
-  
+
   return (
     <div className="grid gap-6 md:grid-cols-3">
       <div className="md:col-span-2 flex flex-col gap-8">
@@ -167,6 +169,17 @@ const HelpSection = () => {
           </div>
           <div className="p-6 pt-4">
             <form className="space-y-4" onSubmit={handleSubmit}>
+              <div className="space-y-2">
+                <label htmlFor="help-name" className="text-sm font-medium">Your Name</label>
+                <input 
+                  id="help-name" 
+                  placeholder="Enter your name" 
+                  className="w-full border rounded px-3 py-2"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
               <div className="space-y-2">
                 <label htmlFor="help-title" className="text-sm font-medium">Title</label>
                 <input 
