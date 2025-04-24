@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Bell, MessageSquare, HelpCircle, Calendar, Users } from "lucide-react";
+import { Home, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
@@ -14,26 +14,17 @@ const Navbar = () => {
         </div>
         
         <nav className="hidden md:flex items-center space-x-4">
-          <Link to="/communications" className="text-gray-700 hover:text-blue-600 transition-colors">
-            Home
-          </Link>
-          <Link to="/communications#announcements" className="text-gray-700 hover:text-blue-600 transition-colors">
-            Announcements
-          </Link>
-          <Link to="/communications#requests" className="text-gray-700 hover:text-blue-600 transition-colors">
-            Requests
-          </Link>
-          <Link to="/communications#help" className="text-gray-700 hover:text-blue-600 transition-colors">
-            Help
-          </Link>
-          <Link to="/communications#events" className="text-gray-700 hover:text-blue-600 transition-colors">
-            Events
+          <Link to="/communications" className="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-1">
+            <Home size={16} />
+            <span>Home</span>
           </Link>
         </nav>
         
-        <div className="flex items-center space-x-2">
-          <Button variant="outline" size="sm">Sign In</Button>
-          <Button size="sm">Register</Button>
+        <div className="flex items-center">
+          <Button variant="ghost" size="sm" className="flex items-center gap-1">
+            <User size={16} />
+            <span>Account</span>
+          </Button>
         </div>
       </div>
     </header>

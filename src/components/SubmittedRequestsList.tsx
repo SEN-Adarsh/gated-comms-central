@@ -1,9 +1,6 @@
 
 import React, { useState } from "react";
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ThumbsUp, ThumbsDown, X } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 // Initial demo data for requests (would be loaded from a backend in a real app)
 const demoRequests = [
@@ -13,7 +10,7 @@ const demoRequests = [
     subject: "Request for more bike parking spaces near Block B entrance.",
     submittedBy: "Samantha K. (B-202)",
     date: "April 17, 2025",
-    votes: 7,
+    status: "Under Review"
   },
   {
     id: 2,
@@ -21,7 +18,7 @@ const demoRequests = [
     subject: "Proposal to set up a book-sharing corner in the main lobby.",
     submittedBy: "Mark Z. (C-108)",
     date: "April 14, 2025",
-    votes: 4,
+    status: "Under Consideration"
   },
   {
     id: 3,
@@ -29,57 +26,30 @@ const demoRequests = [
     subject: "The fence around the kids' play area needs repair for safety.",
     submittedBy: "Priya S. (A-309)",
     date: "April 13, 2025",
-    votes: 9,
+    status: "Approved"
+  },
+  {
+    id: 4,
+    title: "Community Garden Volunteer Group",
+    subject: "Looking for volunteers to maintain the community garden weekly.",
+    submittedBy: "Anonymous",
+    date: "April 12, 2025",
+    status: "Open"
   },
 ];
 
 type Request = typeof demoRequests[0];
 
 const SubmittedRequestsList: React.FC = () => {
-  const [requests, setRequests] = useState<Request[]>([...demoRequests]);
-  const [userVotes, setUserVotes] = useState<{ [key: number]: 1 | -1 | 0 }>({});
-  const { toast } = useToast();
-
-  const handleVote = (id: number, delta: 1 | -1 | 0) => {
-    setRequests((curr) =>
-      curr
-        .map((req) => {
-          if (req.id === id) {
-            // If canceling a vote, remove its effect
-            const prevVote = userVotes[id] ?? 0;
-            return {
-              ...req,
-              votes: req.votes - prevVote + delta,
-            };
-          }
-          return req;
-        })
-        .sort((a, b) => b.votes - a.votes)
-    );
-    
-    // Show toast notification based on vote action
-    if (delta === 0) {
-      toast({
-        title: "Vote Canceled",
-        description: "Your vote has been removed.",
-      });
-    } else {
-      toast({
-        title: delta === 1 ? "Upvoted" : "Downvoted",
-        description: `You have ${delta === 1 ? "upvoted" : "downvoted"} this request.`,
-      });
-    }
-    
-    setUserVotes((curr) => ({ ...curr, [id]: delta }));
-  };
+  const [requests] = useState<Request[]>([...demoRequests]);
 
   return (
     <div className="mt-12">
       <Card>
         <CardHeader className="bg-blue-50">
-          <CardTitle>Submitted Requests (Vote on Community Priorities)</CardTitle>
+          <CardTitle>Submitted Requests</CardTitle>
           <CardDescription>
-            Upvote requests that you want addressed sooner. Requests are ranked by popularity.
+            Recent community requests and their current status
           </CardDescription>
         </CardHeader>
         <CardContent className="pt-4">
@@ -90,44 +60,22 @@ const SubmittedRequestsList: React.FC = () => {
               {requests.map((req) => (
                 <div
                   key={req.id}
-                  className="border flex items-start rounded-lg px-4 py-3 gap-4 shadow-sm bg-white"
+                  className="border flex items-start rounded-lg px-4 py-3 shadow-sm bg-white"
                 >
-                  <div className="flex flex-col items-center pt-1 pr-2 gap-2">
-                    <Button
-                      size="icon"
-                      variant={userVotes[req.id] === 1 ? "default" : "ghost"}
-                      className="mb-1"
-                      aria-label="Upvote"
-                      onClick={() => userVotes[req.id] === 1 ? handleVote(req.id, 0) : handleVote(req.id, 1)}
-                    >
-                      <ThumbsUp className="h-4 w-4" />
-                    </Button>
-                    <span className="font-bold text-lg">{req.votes}</span>
-                    <Button
-                      size="icon"
-                      variant={userVotes[req.id] === -1 ? "default" : "ghost"}
-                      className="mt-1"
-                      aria-label="Downvote"
-                      onClick={() => userVotes[req.id] === -1 ? handleVote(req.id, 0) : handleVote(req.id, -1)}
-                    >
-                      <ThumbsDown className="h-4 w-4" />
-                    </Button>
-                    
-                    {userVotes[req.id] !== 0 && userVotes[req.id] !== undefined && (
-                      <Button
-                        size="icon"
-                        variant="ghost"
-                        className="mt-2"
-                        aria-label="Cancel vote"
-                        onClick={() => handleVote(req.id, 0)}
-                      >
-                        <X className="h-4 w-4" />
-                      </Button>
-                    )}
-                  </div>
                   <div className="flex-1">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-between">
                       <span className="font-semibold text-base">{req.title}</span>
+                      <span className={`text-xs px-2 py-1 rounded ${
+                        req.status === "Approved" 
+                          ? "bg-green-100 text-green-800" 
+                          : req.status === "Under Review" 
+                          ? "bg-yellow-100 text-yellow-800"
+                          : req.status === "Under Consideration"
+                          ? "bg-blue-100 text-blue-800"
+                          : "bg-purple-100 text-purple-800"
+                      }`}>
+                        {req.status}
+                      </span>
                     </div>
                     <p className="text-gray-600 text-[15px] mt-1 mb-2">{req.subject}</p>
                     <div className="text-xs text-gray-500 flex flex-wrap gap-2">

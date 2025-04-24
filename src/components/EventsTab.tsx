@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Calendar } from "lucide-react";
@@ -62,6 +63,51 @@ const EventsTab = () => (
         <Button variant="outline">View Full Calendar</Button>
         <Button>Submit an Event</Button>
       </CardFooter>
+    </Card>
+    
+    {/* External Events Section */}
+    <Card>
+      <CardHeader className="bg-amber-50">
+        <CardTitle>External Events</CardTitle>
+        <CardDescription>Interesting events happening outside our community</CardDescription>
+      </CardHeader>
+      <CardContent className="pt-6">
+        <div className="space-y-4">
+          <div className="border-l-4 border-red-500 pl-4 py-2">
+            <div className="flex items-center justify-between">
+              <h3 className="font-semibold text-lg">City Food Festival</h3>
+              <span className="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">May 15-16, 2025</span>
+            </div>
+            <p className="text-gray-600 mt-1">Annual food festival at downtown featuring cuisines from around the world. Free entry, food purchases available on site.</p>
+            <div className="mt-2 flex items-center text-sm text-gray-500">
+              <Calendar className="h-4 w-4 mr-1" />
+              <span>May 15-16, 2025 • 11:00 AM - 8:00 PM</span>
+            </div>
+          </div>
+          <div className="border-l-4 border-indigo-500 pl-4 py-2">
+            <div className="flex items-center justify-between">
+              <h3 className="font-semibold text-lg">Art in the Park Exhibition</h3>
+              <span className="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">June 2, 2025</span>
+            </div>
+            <p className="text-gray-600 mt-1">Local artists showcasing their work at Central Park. Includes interactive workshops and art sales. Great for all ages.</p>
+            <div className="mt-2 flex items-center text-sm text-gray-500">
+              <Calendar className="h-4 w-4 mr-1" />
+              <span>June 2, 2025 • 10:00 AM - 6:00 PM</span>
+            </div>
+          </div>
+          <div className="border-l-4 border-cyan-500 pl-4 py-2">
+            <div className="flex items-center justify-between">
+              <h3 className="font-semibold text-lg">Regional Home & Garden Show</h3>
+              <span className="bg-cyan-100 text-cyan-800 text-xs px-2 py-1 rounded">June 10-12, 2025</span>
+            </div>
+            <p className="text-gray-600 mt-1">Explore the latest trends in home decor, gardening and landscaping. Expert talks and demonstrations throughout the weekend.</p>
+            <div className="mt-2 flex items-center text-sm text-gray-500">
+              <Calendar className="h-4 w-4 mr-1" />
+              <span>June 10-12, 2025 • 9:00 AM - 7:00 PM</span>
+            </div>
+          </div>
+        </div>
+      </CardContent>
     </Card>
   </div>
 );
