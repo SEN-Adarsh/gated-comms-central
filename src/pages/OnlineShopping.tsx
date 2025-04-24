@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, ArrowLeft, ChevronDown, ChevronUp } from "lucide-react";
@@ -8,7 +7,6 @@ import Navbar from "@/components/Navbar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
-// Sample data structure for items
 interface ItemResult {
   id: string;
   name: string;
@@ -21,14 +19,12 @@ interface ItemResult {
   available: boolean;
 }
 
-// Dummy data function to generate search results
 const generateDummyResults = (query: string): ItemResult[] => {
   if (!query.trim()) return [];
   
   const sources = ["Zepto", "Blinkit", "Swiggy Instamart", "BigBasket", "Flipkart"];
   
   return Array.from({ length: Math.floor(Math.random() * 3) + 3 }, (_, i) => {
-    // Reduced prices (30% of original)
     const price = Math.floor((Math.random() * 200) + 30);
     const source = sources[Math.floor(Math.random() * sources.length)];
     const deliveryFee = Math.floor(Math.random() * 30) + 10;
@@ -114,71 +110,77 @@ const OnlineShopping = () => {
         {results.length > 0 && (
           <div className="space-y-4">
             {results.map(item => (
-              <Card key={item.id} className="overflow-hidden">
+              <Card key={item.id} className="overflow-hidden border-blue-200">
                 <CardHeader className="pb-2">
                   <div className="flex justify-between items-center">
                     <div>
                       <CardTitle className="text-lg">{item.name}</CardTitle>
                       <div className="text-sm text-gray-500">{item.source}</div>
                     </div>
-                    <div className="text-lg font-semibold text-green-700">₹{item.price}</div>
+                    {item.available && (
+                      <div className="text-lg font-semibold text-green-700">₹{item.price}</div>
+                    )}
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <Collapsible
-                    open={openItems[item.id]}
-                    onOpenChange={() => toggleItemDetails(item.id)}
-                    className="space-y-2"
-                  >
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-2">
-                        {item.available ? (
-                          <>
-                            <span className="text-sm text-green-600">Available</span>
-                            <span className="text-xs text-gray-500">•</span>
-                            <span className="text-sm text-gray-600">Est. delivery: {item.estimatedDelivery}</span>
-                          </>
-                        ) : (
-                          <span className="text-sm text-red-600">Currently unavailable</span>
-                        )}
-                      </div>
-                      <CollapsibleTrigger asChild>
-                        <Button variant="ghost" size="sm" className="p-0 h-8 w-8">
-                          {openItems[item.id] ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                        </Button>
-                      </CollapsibleTrigger>
-                    </div>
-                    
-                    <CollapsibleContent className="space-y-2 pt-3 border-t mt-2">
-                      <div className="space-y-1">
-                        <div className="flex justify-between text-sm">
-                          <span>Item price:</span>
-                          <span>₹{item.price.toFixed(2)}</span>
+                  {item.available ? (
+                    <Collapsible
+                      open={openItems[item.id]}
+                      onOpenChange={() => toggleItemDetails(item.id)}
+                      className="space-y-2"
+                    >
+                      <div className="flex justify-between items-center">
+                        <div className="flex items-center gap-2">
+                          {item.available ? (
+                            <>
+                              <span className="text-sm text-green-600">Available</span>
+                              <span className="text-xs text-gray-500">•</span>
+                              <span className="text-sm text-gray-600">Est. delivery: {item.estimatedDelivery}</span>
+                            </>
+                          ) : (
+                            <span className="text-sm text-red-600">Currently unavailable</span>
+                          )}
                         </div>
-                        
-                        {item.packageFee > 0 && (
-                          <div className="flex justify-between text-sm">
-                            <span>Small cart fee:</span>
-                            <span>₹{item.packageFee.toFixed(2)}</span>
-                          </div>
-                        )}
-                        
-                        <div className="flex justify-between text-sm">
-                          <span>Delivery fee:</span>
-                          <span>₹{item.deliveryFee.toFixed(2)}</span>
-                        </div>
-                        
-                        <div className="flex justify-between font-semibold border-t pt-1 mt-1">
-                          <span>Total:</span>
-                          <span>₹{(item.price + item.deliveryFee + (item.packageFee || 0)).toFixed(2)}</span>
-                        </div>
+                        <CollapsibleTrigger asChild>
+                          <Button variant="ghost" size="sm" className="p-0 h-8 w-8">
+                            {openItems[item.id] ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                          </Button>
+                        </CollapsibleTrigger>
                       </div>
                       
-                      <div className="pt-2">
-                        <Button className="w-full">View on {item.source}</Button>
-                      </div>
-                    </CollapsibleContent>
-                  </Collapsible>
+                      <CollapsibleContent className="space-y-2 pt-3 border-t mt-2">
+                        <div className="space-y-1">
+                          <div className="flex justify-between text-sm">
+                            <span>Item price:</span>
+                            <span>₹{item.price.toFixed(2)}</span>
+                          </div>
+                          
+                          {item.packageFee > 0 && (
+                            <div className="flex justify-between text-sm">
+                              <span>Small cart fee:</span>
+                              <span>₹{item.packageFee.toFixed(2)}</span>
+                            </div>
+                          )}
+                          
+                          <div className="flex justify-between text-sm">
+                            <span>Delivery fee:</span>
+                            <span>₹{item.deliveryFee.toFixed(2)}</span>
+                          </div>
+                          
+                          <div className="flex justify-between font-semibold border-t pt-1 mt-1">
+                            <span>Total:</span>
+                            <span>₹{(item.price + item.deliveryFee + (item.packageFee || 0)).toFixed(2)}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="pt-2">
+                          <Button className="w-full">View on {item.source}</Button>
+                        </div>
+                      </CollapsibleContent>
+                    </Collapsible>
+                  ) : (
+                    <span className="text-sm text-red-600">Currently unavailable</span>
+                  )}
                 </CardContent>
               </Card>
             ))}

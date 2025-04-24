@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -37,7 +36,7 @@ const BillingTab = () => (
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Last Bill</span>
-                  <span className="font-medium">₹6,225</span>
+                  <span className="font-medium">₹3,875</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Due Date</span>
@@ -71,7 +70,7 @@ const BillingTab = () => (
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Current Bill</span>
-                  <span className="font-medium">₹3,912</span>
+                  <span className="font-medium">₹675</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Due Date</span>
