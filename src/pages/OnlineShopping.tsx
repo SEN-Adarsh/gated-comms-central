@@ -28,10 +28,11 @@ const generateDummyResults = (query: string): ItemResult[] => {
   const sources = ["Zepto", "Blinkit", "Swiggy Instamart", "BigBasket", "Flipkart"];
   
   return Array.from({ length: Math.floor(Math.random() * 3) + 3 }, (_, i) => {
-    const price = Math.floor(Math.random() * 500) + 50;
+    // Reduced prices (30% of original)
+    const price = Math.floor((Math.random() * 200) + 30);
     const source = sources[Math.floor(Math.random() * sources.length)];
-    const deliveryFee = Math.floor(Math.random() * 60) + 20;
-    const packageFee = price < 99 ? Math.floor(Math.random() * 20) + 10 : 0;
+    const deliveryFee = Math.floor(Math.random() * 30) + 10;
+    const packageFee = price < 99 ? Math.floor(Math.random() * 10) + 5 : 0;
     
     return {
       id: `${i}-${Date.now()}`,
@@ -132,12 +133,14 @@ const OnlineShopping = () => {
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-2">
                         {item.available ? (
-                          <span className="text-sm text-green-600">Available</span>
+                          <>
+                            <span className="text-sm text-green-600">Available</span>
+                            <span className="text-xs text-gray-500">•</span>
+                            <span className="text-sm text-gray-600">Est. delivery: {item.estimatedDelivery}</span>
+                          </>
                         ) : (
                           <span className="text-sm text-red-600">Currently unavailable</span>
                         )}
-                        <span className="text-xs text-gray-500">•</span>
-                        <span className="text-sm text-gray-600">Est. delivery: {item.estimatedDelivery}</span>
                       </div>
                       <CollapsibleTrigger asChild>
                         <Button variant="ghost" size="sm" className="p-0 h-8 w-8">

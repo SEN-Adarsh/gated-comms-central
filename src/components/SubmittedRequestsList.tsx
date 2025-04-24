@@ -1,8 +1,8 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 
-// Initial demo data for requests (would be loaded from a backend in a real app)
+// Initial demo data for requests
 const demoRequests = [
   {
     id: 1,
@@ -38,10 +38,27 @@ const demoRequests = [
   },
 ];
 
-type Request = typeof demoRequests[0];
+type Request = {
+  id: number;
+  title: string;
+  subject: string;
+  submittedBy: string;
+  date: string;
+  status: string;
+};
 
-const SubmittedRequestsList: React.FC = () => {
-  const [requests] = useState<Request[]>([...demoRequests]);
+interface SubmittedRequestsListProps {
+  initialRequests?: Request[];
+}
+
+const SubmittedRequestsList: React.FC<SubmittedRequestsListProps> = ({ initialRequests = [] }) => {
+  const [requests, setRequests] = useState<Request[]>([...demoRequests]);
+
+  useEffect(() => {
+    if (initialRequests.length > 0) {
+      setRequests(prev => [...initialRequests, ...prev]);
+    }
+  }, [initialRequests]);
 
   return (
     <div className="mt-12">

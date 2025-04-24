@@ -1,13 +1,62 @@
+
 import React, { useState } from "react";
 import { Card, CardHeader, CardContent, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import { toast } from "sonner";
 import SubmittedRequestsList from "@/components/SubmittedRequestsList";
 
 const RequestsTab = () => {
   const [isAnonymous, setIsAnonymous] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    unit: "",
+    subject: "",
+    message: ""
+  });
+  const [submittedRequests, setSubmittedRequests] = useState([]);
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Create new request object
+    const newRequest = {
+      id: Date.now(),
+      title: formData.subject,
+      subject: formData.message,
+      submittedBy: isAnonymous ? "Anonymous" : `${formData.name} (${formData.unit})`,
+      date: new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }),
+      status: "Under Review"
+    };
+
+    // Update submitted requests list
+    setSubmittedRequests(prev => [newRequest, ...prev]);
+    
+    // Reset form
+    setFormData({
+      name: "",
+      unit: "",
+      subject: "",
+      message: ""
+    });
+    
+    // Show confirmation
+    toast.success("Request submitted successfully!");
+  };
 
   return (
     <div>
@@ -21,21 +70,40 @@ const RequestsTab = () => {
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-6">
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid gap-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium">Name</label>
-                      <Input id="name" placeholder="Your name" disabled={isAnonymous} />
+                      <Input 
+                        id="name" 
+                        placeholder="Your name" 
+                        disabled={isAnonymous} 
+                        value={formData.name}
+                        onChange={handleChange}
+                        required={!isAnonymous}
+                      />
                     </div>
                     <div className="space-y-2">
                       <label htmlFor="unit" className="text-sm font-medium">Unit/Apartment #</label>
-                      <Input id="unit" placeholder="e.g., A-101" />
+                      <Input 
+                        id="unit" 
+                        placeholder="e.g., A-101" 
+                        value={formData.unit}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="subject" className="text-sm font-medium">Subject</label>
-                    <Input id="subject" placeholder="Brief subject of your request" />
+                    <Input 
+                      id="subject" 
+                      placeholder="Brief subject of your request" 
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="message" className="text-sm font-medium">Message</label>
@@ -43,6 +111,9 @@ const RequestsTab = () => {
                       id="message" 
                       placeholder="Please provide details of your request..." 
                       rows={5}
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
                     />
                   </div>
                   <div className="flex items-center space-x-2">
@@ -59,14 +130,26 @@ const RequestsTab = () => {
               </form>
             </CardContent>
             <CardFooter className="flex justify-between">
-              <Button variant="outline">Cancel</Button>
-              <Button>Submit Request</Button>
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  setFormData({
+                    name: "",
+                    unit: "",
+                    subject: "",
+                    message: ""
+                  });
+                }}
+              >
+                Cancel
+              </Button>
+              <Button onClick={handleSubmit}>Submit Request</Button>
             </CardFooter>
           </Card>
         </div>
         <div>
           <Card>
-            <CardHeader className="bg-teal-50">
+            <CardHeader className="bg-lime-50">
               <CardTitle>Requests in Action</CardTitle>
               <CardDescription>Track your submitted requests</CardDescription>
             </CardHeader>
@@ -98,20 +181,9 @@ const RequestsTab = () => {
           </Card>
         </div>
       </div>
-      {/* Update title */}
+      {/* Submitted Requests Section */}
       <div className="mt-6 container mx-auto px-4">
-        <Card className="mb-6">
-          <CardHeader className="bg-purple-50">
-            <CardTitle>Post a Request/Offer</CardTitle>
-            <CardDescription>Share your needs or offerings with the community</CardDescription>
-          </CardHeader>
-          <CardContent className="pt-6">
-            <div className="grid gap-4">
-              
-            </div>
-          </CardContent>
-        </Card>
-        <SubmittedRequestsList />
+        <SubmittedRequestsList initialRequests={submittedRequests} />
       </div>
     </div>
   );

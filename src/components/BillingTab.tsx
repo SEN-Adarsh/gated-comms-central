@@ -37,7 +37,7 @@ const BillingTab = () => (
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Last Bill</span>
-                  <span className="font-medium">$124.50</span>
+                  <span className="font-medium">₹6,225</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Due Date</span>
@@ -71,7 +71,7 @@ const BillingTab = () => (
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Current Bill</span>
-                  <span className="font-medium">$78.25</span>
+                  <span className="font-medium">₹3,912</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Due Date</span>
@@ -105,7 +105,7 @@ const BillingTab = () => (
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Quarterly Fee</span>
-                  <span className="font-medium">$350.00</span>
+                  <span className="font-medium">₹17,500</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Due Date</span>
@@ -138,7 +138,7 @@ const BillingTab = () => (
               <p className="text-sm text-gray-500">April 10, 2025</p>
             </div>
             <div className="text-right">
-              <p className="font-medium text-green-600">$124.50</p>
+              <p className="font-medium text-green-600">₹6,225</p>
               <p className="text-sm text-gray-500">Online Payment</p>
             </div>
           </div>
@@ -148,7 +148,7 @@ const BillingTab = () => (
               <p className="text-sm text-gray-500">March 25, 2025</p>
             </div>
             <div className="text-right">
-              <p className="font-medium text-green-600">$82.75</p>
+              <p className="font-medium text-green-600">₹4,137</p>
               <p className="text-sm text-gray-500">Auto-pay</p>
             </div>
           </div>
@@ -158,7 +158,7 @@ const BillingTab = () => (
               <p className="text-sm text-gray-500">January 15, 2025</p>
             </div>
             <div className="text-right">
-              <p className="font-medium text-green-600">$350.00</p>
+              <p className="font-medium text-green-600">₹17,500</p>
               <p className="text-sm text-gray-500">Bank Transfer</p>
             </div>
           </div>
@@ -168,7 +168,7 @@ const BillingTab = () => (
               <p className="text-sm text-gray-500">January 5, 2025</p>
             </div>
             <div className="text-right">
-              <p className="font-medium text-green-600">$150.00</p>
+              <p className="font-medium text-green-600">₹7,500</p>
               <p className="text-sm text-gray-500">Check Payment</p>
             </div>
           </div>
