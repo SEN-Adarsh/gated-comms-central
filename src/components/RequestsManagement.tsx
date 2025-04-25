@@ -9,16 +9,16 @@ import { Check, X } from "lucide-react";
 const initialRequests = [
   {
     id: 1,
-    title: "Park Bench Repair",
-    subject: "The bench near Block A needs urgent repair",
+    title: "Request for Fresh Produce",
+    subject: "Please stock more organic vegetables",
     submittedBy: "John Doe (A-101)",
     date: "April 14, 2025",
     status: "pending"
   },
   {
     id: 2,
-    title: "Street Light Issue",
-    subject: "Street light not working in front of Block B",
+    title: "Gluten-Free Products",
+    subject: "I need more gluten-free options in the shop",
     submittedBy: "Jane Smith (B-202)",
     date: "April 5, 2025",
     status: "pending"
@@ -45,7 +45,7 @@ const RequestsManagement = () => {
     <div className="p-6">
       <Card>
         <CardHeader>
-          <CardTitle>Pending Requests</CardTitle>
+          <CardTitle>Shop Product Requests</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
