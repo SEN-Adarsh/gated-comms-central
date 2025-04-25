@@ -1,15 +1,15 @@
-
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
-import { Users, MessageSquare } from "lucide-react";
+import { Users, MessageSquare, Calendar } from "lucide-react";
 import ResidentsView from "@/components/ResidentsView";
 import PresidentAnnouncements from "@/components/PresidentAnnouncements";
 import RequestsManagement from "@/components/RequestsManagement";
+import PresidentEvents from "@/components/PresidentEvents";
 
 const PresidentDashboard = () => {
-  const [activeView, setActiveView] = useState<'main' | 'residents' | 'announcements' | 'requests'>('main');
+  const [activeView, setActiveView] = useState<'main' | 'residents' | 'announcements' | 'requests' | 'events'>('main');
 
   if (activeView === 'residents') {
     return (
@@ -56,6 +56,21 @@ const PresidentDashboard = () => {
     );
   }
 
+  if (activeView === 'events') {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <Navbar />
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-3xl font-bold">Events Management</h1>
+            <Button onClick={() => setActiveView('main')}>Back to Dashboard</Button>
+          </div>
+          <PresidentEvents />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
@@ -96,14 +111,14 @@ const PresidentDashboard = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <MessageSquare className="h-5 w-5" />
-                Requisitions
+                <Calendar className="h-5 w-5" />
+                Events
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600 mb-4">Review and manage community requests.</p>
-              <Button className="w-full" onClick={() => setActiveView('requests')}>
-                View Requests
+              <p className="text-gray-600 mb-4">Manage community events and activities.</p>
+              <Button className="w-full" onClick={() => setActiveView('events')}>
+                Manage Events
               </Button>
             </CardContent>
           </Card>
