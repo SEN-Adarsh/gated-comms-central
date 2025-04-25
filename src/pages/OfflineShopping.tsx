@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Copy, ArrowLeft, Send, Receipt } from "lucide-react";
+import { MapPin, Phone, Copy, ArrowLeft, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 
 const nearbyStores = [
   {
@@ -60,25 +59,6 @@ const nearbyStores = [
   }
 ];
 
-const shoppingLists = [
-  {
-    id: 1,
-    storeName: "Fresh Grocers Supermart",
-    items: "1. Organic Vegetables\n2. Whole Wheat Bread\n3. Milk",
-    billAmount: 850,
-    date: "2025-04-24",
-    status: "Delivered"
-  },
-  {
-    id: 2,
-    storeName: "Daily Essentials",
-    items: "1. Rice\n2. Pulses\n3. Cooking Oil",
-    billAmount: 1200,
-    date: "2025-04-23",
-    status: "Processing"
-  }
-];
-
 const OfflineShopping = () => {
   const copyToClipboard = (phoneNumber: string) => {
     navigator.clipboard.writeText(phoneNumber);
@@ -89,7 +69,7 @@ const OfflineShopping = () => {
   const [selectedStore, setSelectedStore] = useState<typeof nearbyStores[0] | null>(null);
   const [groceryList, setGroceryList] = useState("");
   
-  const handleSendList = (store) => {
+  const handleAction = (store) => {
     setSelectedStore(store);
     setDialogOpen(true);
   };
@@ -159,7 +139,7 @@ const OfflineShopping = () => {
                       size="sm"
                       variant="outline"
                       className="flex items-center gap-1 border-blue-500 text-blue-700"
-                      onClick={() => handleSendList(store)}
+                      onClick={() => handleAction(store)}
                     >
                       <Send className="h-4 w-4" />
                       Send List
@@ -169,49 +149,6 @@ const OfflineShopping = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div className="mt-12">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Receipt className="h-5 w-5" />
-                Your Shopping Lists
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Store</TableHead>
-                    <TableHead>Items</TableHead>
-                    <TableHead>Bill Amount</TableHead>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Status</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {shoppingLists.map((list) => (
-                    <TableRow key={list.id}>
-                      <TableCell className="font-medium">{list.storeName}</TableCell>
-                      <TableCell className="whitespace-pre-line">{list.items}</TableCell>
-                      <TableCell>₹{list.billAmount}</TableCell>
-                      <TableCell>{list.date}</TableCell>
-                      <TableCell>
-                        <span className={`px-2 py-1 rounded-full text-xs ${
-                          list.status === 'Delivered' 
-                            ? 'bg-green-100 text-green-800' 
-                            : 'bg-blue-100 text-blue-800'
-                        }`}>
-                          {list.status}
-                        </span>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
         </div>
       </div>
       
