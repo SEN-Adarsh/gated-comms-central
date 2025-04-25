@@ -1,8 +1,9 @@
+
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
-import { Users, MessageSquare, Calendar } from "lucide-react";
+import { Users, MessageSquare, Calendar, ListChecks } from "lucide-react";
 import ResidentsView from "@/components/ResidentsView";
 import PresidentAnnouncements from "@/components/PresidentAnnouncements";
 import RequestsManagement from "@/components/RequestsManagement";
@@ -47,7 +48,7 @@ const PresidentDashboard = () => {
         <Navbar />
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold">Requests Management</h1>
+            <h1 className="text-3xl font-bold">Requisitions Management</h1>
             <Button onClick={() => setActiveView('main')}>Back to Dashboard</Button>
           </div>
           <RequestsManagement />
@@ -104,6 +105,21 @@ const PresidentDashboard = () => {
               <p className="text-gray-600 mb-4">Create and manage community announcements.</p>
               <Button className="w-full" onClick={() => setActiveView('announcements')}>
                 Manage Announcements
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <ListChecks className="h-5 w-5" />
+                Requisitions
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600 mb-4">Review and manage community requests.</p>
+              <Button className="w-full" onClick={() => setActiveView('requests')}>
+                Manage Requisitions
               </Button>
             </CardContent>
           </Card>
