@@ -6,6 +6,24 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
+// Define user roles and their credentials
+const ROLE_CREDENTIALS = {
+  president: {
+    email: "president@gmail.com",
+    role: "president",
+    redirect: "/president-dashboard",
+  },
+  shopkeeper: {
+    email: "shop@gmail.com",
+    role: "shopkeeper",
+    redirect: "/shop-dashboard",
+  },
+  resident: {
+    role: "resident",
+    redirect: "/communications",
+  },
+};
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,13 +33,28 @@ const Login = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // This is a mock login - in a real app, this would connect to an authentication service
     if (email && password) {
-      toast({
-        title: "Login successful",
-        description: "Welcome to GatedComms Central",
-      });
-      navigate("/communications");
+      // Check for special roles
+      if (email === ROLE_CREDENTIALS.president.email) {
+        toast({
+          title: "Welcome, Community President",
+          description: "Logging you into the president dashboard",
+        });
+        navigate(ROLE_CREDENTIALS.president.redirect);
+      } else if (email === ROLE_CREDENTIALS.shopkeeper.email) {
+        toast({
+          title: "Welcome, Shop Manager",
+          description: "Logging you into the shop dashboard",
+        });
+        navigate(ROLE_CREDENTIALS.shopkeeper.redirect);
+      } else {
+        // Regular resident login
+        toast({
+          title: "Login successful",
+          description: "Welcome to GatedComms Central",
+        });
+        navigate(ROLE_CREDENTIALS.resident.redirect);
+      }
     } else {
       toast({
         title: "Login failed",
