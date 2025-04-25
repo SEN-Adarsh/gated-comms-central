@@ -8,10 +8,10 @@ import { Bell, Calendar } from "lucide-react";
 import { toast } from "sonner";
 
 // Import the announcements data from the Announcements component
-import { ANNOUNCEMENTS } from "@/components/Announcements";
+import { ANNOUNCEMENTS, type Announcement } from "@/components/Announcements";
 
 const PresidentAnnouncements = () => {
-  const [announcements, setAnnouncements] = useState(ANNOUNCEMENTS);
+  const [announcements, setAnnouncements] = useState<Announcement[]>(ANNOUNCEMENTS);
   const [newAnnouncement, setNewAnnouncement] = useState({
     title: "",
     content: "",
@@ -26,7 +26,7 @@ const PresidentAnnouncements = () => {
       day: 'numeric'
     });
 
-    const announcement = {
+    const announcement: Announcement = {
       title: newAnnouncement.title,
       description: currentDate,
       date: currentDate,

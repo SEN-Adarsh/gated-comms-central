@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Bell } from "lucide-react";
 
-type Announcement = {
+export type Announcement = {
   title: string;
   description: string;
   date: string;
@@ -11,7 +11,7 @@ type Announcement = {
   type: "urgent" | "normal";
 };
 
-const ANNOUNCEMENTS: Announcement[] = [
+export const ANNOUNCEMENTS: Announcement[] = [
   {
     title: "Maintenance Notice",
     description: "April 18, 2025",
